@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BallHandler : MonoBehaviour
 {
-    [SerializeField]Camera Cam;
+    [SerializeField] Camera Cam;
+    [SerializeField] float Accelerationes = 1;
     //This script handles the Ball ( ͡° ͜ʖ ͡°)   e.g the Movement etc
 
     private Rigidbody rg;
@@ -21,12 +22,12 @@ public class BallHandler : MonoBehaviour
         if (Input.GetButton("Horizontal"))
         {
             Debug.Log("Adding force");
-            rg.AddForce(Vector3.right * Input.GetAxis("Horizontal"));
+            rg.AddForce(Vector3.right * Input.GetAxis("Horizontal")*Accelerationes);
         }
         if (Input.GetButton("Vertical"))
         {
             Debug.Log("Adding force");
-            rg.AddForce(Vector3.forward * Input.GetAxis("Vertical"));
+            rg.AddForce(Vector3.forward * Input.GetAxis("Vertical")*Accelerationes);
         }
 
         Vector3 temp = transform.position;
