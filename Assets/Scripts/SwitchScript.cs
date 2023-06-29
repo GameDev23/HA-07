@@ -9,6 +9,7 @@ public class SwitchScript : MonoBehaviour
 
     [SerializeField] private bool isActive = false;
 
+    [SerializeField] private Color NormalColor = Color.white;
     [SerializeField] private Color ActivatedColor;
 
     [SerializeField] private GameObject[] ObjectsToToggle;
@@ -23,7 +24,7 @@ public class SwitchScript : MonoBehaviour
         if (isActive)
             GetComponent<Renderer>().material.color = ActivatedColor;
         else
-            GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Renderer>().material.color = NormalColor;
         
         origin  = transform.position;
 
@@ -48,6 +49,7 @@ public class SwitchScript : MonoBehaviour
     
     IEnumerator toggleSwitch()
     {
+        
         //Exit if button should only be pressed once
         if (wasToggled && !isToggleAble)
             yield break;
@@ -63,7 +65,7 @@ public class SwitchScript : MonoBehaviour
         if (isActive)
             GetComponent<Renderer>().material.color = ActivatedColor;
         else
-            GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Renderer>().material.color = NormalColor;
         
         while (Vector3.Distance(origin, transform.position) > 0.02f)
         {
@@ -75,7 +77,8 @@ public class SwitchScript : MonoBehaviour
         {
             obj.SetActive(!obj.activeSelf);
         }
-        
+
+        wasToggled = true;
         isToggling = false;
         
         

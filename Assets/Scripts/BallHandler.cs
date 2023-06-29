@@ -116,5 +116,16 @@ public class BallHandler : MonoBehaviour
             isOnGround = true;
             jumpsLeft = MidAirJumps;
         }
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Collectible"))
+        {
+            Destroy(other.gameObject);
+            AudioManager.Instance.SourceSFX.PlayOneShot(AudioManager.Instance.SonicCoin, 0.5f);
+            DavidManager.Instance.CollectedCoins += 1;
+        }
     }
 }

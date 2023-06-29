@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class DavidManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public static DavidManager Instance;
+    public int CollectedCoins = 0;
+    
+    void Awake(){
+        if(Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            Destroy(this);
+    }
+    
     void Start()
     {
         //Adjust audio sources
@@ -15,7 +25,7 @@ public class DavidManager : MonoBehaviour
         AudioManager.Instance.SourceSFX.volume = 0.12f;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         

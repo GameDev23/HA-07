@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isToggleAble: 1
   isActive: 0
+  NormalColor: {r: 1, g: 1, b: 1, a: 0}
   ActivatedColor: {r: 0.64969164, g: 0.39208794, b: 0.9339623, a: 0}
   ObjectsToToggle:
   - {fileID: 0}
