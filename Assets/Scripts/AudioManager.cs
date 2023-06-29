@@ -5,6 +5,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioSource SourceBGM;
+    public AudioSource SourceSFX;
+    public AudioClip DavidBGM;
+    public AudioClip Qua;
+    public AudioClip Son;
+    public AudioClip VineBoom;
     void Awake(){
         if(Instance == null)
             Instance = this;

@@ -89,7 +89,16 @@ public class BallHandler : MonoBehaviour
             rg.AddForce(Vector3.up * JumpStrength);
             //decrease jumps if not on ground
             if(!isOnGround)
+            {
+                AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.Son;
+                AudioManager.Instance.SourceSFX.Play();
                 jumpsLeft = jumpsLeft > 0 ? jumpsLeft - 1 : 0;
+            }
+            else
+            {
+                AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.Qua;
+                AudioManager.Instance.SourceSFX.Play();
+            }
             
             
             isOnGround = false;
