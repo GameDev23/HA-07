@@ -8,6 +8,7 @@ TagManager:
   - Switch
   - Pendulum
   - Collectible
+  - DeathBox
   layers:
   - Default
   - TransparentFX

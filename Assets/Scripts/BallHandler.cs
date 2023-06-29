@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallHandler : MonoBehaviour
 {
@@ -161,6 +162,11 @@ public class BallHandler : MonoBehaviour
             Destroy(other.gameObject);
             AudioManager.Instance.SourceSFX.PlayOneShot(AudioManager.Instance.SonicCoin, 0.5f);
             DavidManager.Instance.CollectedCoins += 1;
+        }
+
+        if (other.gameObject.CompareTag("DeathBox"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
