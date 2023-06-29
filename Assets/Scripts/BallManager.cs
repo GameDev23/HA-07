@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallManager : MonoBehaviour
 {
     public static BallManager Instance;
+    public bool isOnGround = false;
     void Awake(){
         if(Instance == null)
             Instance = this;
