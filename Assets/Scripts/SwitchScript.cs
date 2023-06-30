@@ -60,7 +60,7 @@ public class SwitchScript : MonoBehaviour
         isActive = !isActive;
         
         isToggling = true;
-        if(PressSound != null && !isActive)
+        if(PressSound != null && isActive)
             AudioManager.Instance.SourceSFX.PlayOneShot(PressSound, 1f);
         while(Vector3.Distance(new Vector3(origin.x, origin.y - 0.1f, origin.z), transform.position) > 0.02f)
         {
@@ -86,7 +86,6 @@ public class SwitchScript : MonoBehaviour
 
         wasToggled = !wasToggled;
         isToggling = false;
-        
         
         
         yield return null;
