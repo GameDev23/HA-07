@@ -313,3 +313,4 @@ MonoBehaviour:
   WhatTheDogDoin: {fileID: 8300000, guid: ea8be614fa2c8014384fa520644c98d0, type: 3}
   FartReverb: {fileID: 8300000, guid: d258fe9e9fb87ef40b604cb1afda143a, type: 3}
   NichtSoTief: {fileID: 8300000, guid: 091c895aabc8df845841d92ad764ded9, type: 3}
+  Goal: {fileID: 8300000, guid: 2d645b09af0f6bd4e94db91a2f88d4ae, type: 3}

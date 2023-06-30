@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip WhatTheDogDoin;
     public AudioClip FartReverb;
     public AudioClip NichtSoTief;
+    public AudioClip Goal;
     
     void Awake(){
         if(Instance == null)

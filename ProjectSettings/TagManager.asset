@@ -9,6 +9,7 @@ TagManager:
   - Pendulum
   - Collectible
   - DeathBox
+  - Goal
   layers:
   - Default
   - TransparentFX

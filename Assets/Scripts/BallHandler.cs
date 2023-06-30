@@ -157,12 +157,7 @@ public class BallHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Collectible"))
-        {
-            Destroy(other.gameObject);
-            AudioManager.Instance.SourceSFX.PlayOneShot(AudioManager.Instance.SonicCoin, 0.5f);
-            DavidManager.Instance.CollectedCoins += 1;
-        }
+
 
         if (other.gameObject.CompareTag("DeathBox"))
         {
