@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip GokuDrip;
     public AudioClip WhatTheDogDoin;
     public AudioClip FartReverb;
+    public AudioClip NichtSoTief;
     
     void Awake(){
         if(Instance == null)

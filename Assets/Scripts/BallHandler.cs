@@ -166,7 +166,21 @@ public class BallHandler : MonoBehaviour
 
         if (other.gameObject.CompareTag("DeathBox"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(resetScene());
         }
+    }
+
+    IEnumerator resetScene()
+    {
+        AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.NichtSoTief;
+        AudioManager.Instance.SourceSFX.volume = 1f;
+        AudioManager.Instance.SourceSFX.loop = false;
+        AudioManager.Instance.SourceSFX.Play();
+
+        while (AudioManager.Instance.SourceSFX.isPlaying)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
