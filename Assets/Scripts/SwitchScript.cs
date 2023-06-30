@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class SwitchScript : MonoBehaviour
 {
-    [SerializeField] private bool isToggleAble = true;
+    [SerializeField] public bool isToggleAble = true;
 
-    [SerializeField] private bool isActive = false;
+    [SerializeField] public bool isActive = false;
+
+    [SerializeField] private AudioClip PressSound;
 
     [SerializeField] private Color NormalColor = Color.white;
     [SerializeField] private Color ActivatedColor;
@@ -46,16 +48,20 @@ public class SwitchScript : MonoBehaviour
             StartCoroutine(toggleSwitch());
         }
     }
-    
-    IEnumerator toggleSwitch()
+
+    IEnumerator toggleSwitch(bool forcetoggle = false, float delay = 0f)
     {
+        if (delay != 0f)
+            yield return new WaitForSeconds(delay);
         
         //Exit if button should only be pressed once
-        if (wasToggled && !isToggleAble)
+        if (wasToggled && !isToggleAble && !forcetoggle)
             yield break;
         isActive = !isActive;
         
         isToggling = true;
+        if(PressSound != null && !isActive)
+            AudioManager.Instance.SourceSFX.PlayOneShot(PressSound, 1f);
         while(Vector3.Distance(new Vector3(origin.x, origin.y - 0.1f, origin.z), transform.position) > 0.02f)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(origin.x, origin.y - 0.1f, origin.z), Time.deltaTime);
@@ -78,11 +84,24 @@ public class SwitchScript : MonoBehaviour
             obj.SetActive(!obj.activeSelf);
         }
 
-        wasToggled = true;
+        wasToggled = !wasToggled;
         isToggling = false;
         
         
         
         yield return null;
+    }
+
+    public void reset(float delay = 0f)
+    {
+        StartCoroutine(resetSwitch(delay));
+    }
+
+    IEnumerator resetSwitch(float delay)
+    {
+        if (delay != 0f)
+            yield return new WaitForSeconds(delay);
+        Debug.Log("Resetting " + name);
+        StartCoroutine(toggleSwitch(true));
     }
 }

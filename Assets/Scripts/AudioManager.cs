@@ -13,6 +13,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip VineBoom;
     public AudioClip SonicCoin;
     public AudioClip GokuDrip;
+    public AudioClip WhatTheDogDoin;
+    public AudioClip FartReverb;
+    
     void Awake(){
         if(Instance == null)
             Instance = this;
