@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallHandler : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class BallHandler : MonoBehaviour
 
     [SerializeField] private float Acceleration = 1f;
     [SerializeField] private Vector3 MaxVelocity = new Vector3(8f, 100f, 8f);
+    [SerializeField] private float GodmodeSpeed = 0.5f;
     [SerializeField] private Camera camera;
     [SerializeField] private float OffsetFromPlayer = 5;
     [SerializeField] private float JumpStrength = 5;
+    [SerializeField] private GameObject BottomContact;
 
     public bool isOnGround = true;
     public int MidAirJumps = 1;
+    public bool isGodmode = false;
     
     private Rigidbody rg;
 
@@ -28,6 +32,7 @@ public class BallHandler : MonoBehaviour
         rg = GetComponent<Rigidbody>();
         camera.transform.position =
             new Vector3(transform.position.x, camera.transform.position.y, transform.position.z - OffsetFromPlayer);
+        BottomContact.transform.position = transform.position;
 
         jumpsLeft = MidAirJumps;
     }
@@ -61,24 +66,41 @@ public class BallHandler : MonoBehaviour
         
         //get the Input of the Ball
         MoveVector = new Vector3();
-        if (Input.GetButton("Horizontal"))
+        if (!isGodmode)
         {
-            MoveVector += MoveVector + Vector3.right * Input.GetAxis("Horizontal") * Acceleration;
+            if (Input.GetButton("Horizontal"))
+            {
+                MoveVector += MoveVector + Vector3.right * Input.GetAxis("Horizontal") * Acceleration;
 
+            }
+            if (Input.GetButton("Vertical"))
+            {
+                MoveVector += MoveVector + Vector3.forward * Input.GetAxis("Vertical") * Acceleration;
+            }
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }
         }
-        if (Input.GetButton("Vertical"))
+        else
         {
-            MoveVector += MoveVector + Vector3.forward * Input.GetAxis("Vertical") * Acceleration;
+            transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("yaxis") * 0.2f, Input.GetAxis("Vertical")) * GodmodeSpeed;
+            
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Enable Debug Button 1"))
         {
-            Jump();
+            ToggleGodmode();
         }
+
+        BallManager.Instance.isOnGround = isOnGround;
         
         //Adjust camera to follow player
         camera.transform.position =
             new Vector3(transform.position.x, camera.transform.position.y, transform.position.z - OffsetFromPlayer);
+        BottomContact.transform.position =
+            new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
     }
 
     private void Jump()
@@ -89,12 +111,35 @@ public class BallHandler : MonoBehaviour
             rg.AddForce(Vector3.up * JumpStrength);
             //decrease jumps if not on ground
             if(!isOnGround)
+            {
+                AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.Son;
+                AudioManager.Instance.SourceSFX.Play();
                 jumpsLeft = jumpsLeft > 0 ? jumpsLeft - 1 : 0;
+            }
+            else
+            {
+                AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.Qua;
+                AudioManager.Instance.SourceSFX.Play();
+            }
             
             
             isOnGround = false;
             
             
+        }
+    }
+
+    private void ToggleGodmode()
+    {
+        if (isGodmode)
+        {
+            isGodmode = false;
+            rg.isKinematic = false;
+        }
+        else
+        {
+            isGodmode = true;
+            rg.isKinematic = true;
         }
     }
 
@@ -107,5 +152,35 @@ public class BallHandler : MonoBehaviour
             isOnGround = true;
             jumpsLeft = MidAirJumps;
         }
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Collectible"))
+        {
+            Destroy(other.gameObject);
+            AudioManager.Instance.SourceSFX.PlayOneShot(AudioManager.Instance.SonicCoin, 0.5f);
+            DavidManager.Instance.CollectedCoins += 1;
+        }
+
+        if (other.gameObject.CompareTag("DeathBox"))
+        {
+            StartCoroutine(resetScene());
+        }
+    }
+
+    IEnumerator resetScene()
+    {
+        AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.NichtSoTief;
+        AudioManager.Instance.SourceSFX.volume = 1f;
+        AudioManager.Instance.SourceSFX.loop = false;
+        AudioManager.Instance.SourceSFX.Play();
+
+        while (AudioManager.Instance.SourceSFX.isPlaying)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

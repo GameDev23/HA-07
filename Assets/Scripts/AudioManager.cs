@@ -5,6 +5,18 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioSource SourceBGM;
+    public AudioSource SourceSFX;
+    public AudioClip DavidBGM;
+    public AudioClip Qua;
+    public AudioClip Son;
+    public AudioClip VineBoom;
+    public AudioClip SonicCoin;
+    public AudioClip GokuDrip;
+    public AudioClip WhatTheDogDoin;
+    public AudioClip FartReverb;
+    public AudioClip NichtSoTief;
+    
     void Awake(){
         if(Instance == null)
             Instance = this;
