@@ -25,7 +25,8 @@ public class SusMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        if (rg.velocity.magnitude < 0.1f)
+        
+        if (rg != null && rg.velocity.magnitude < 0.1f)
         {
             
             rg.AddForce(MovementVector);

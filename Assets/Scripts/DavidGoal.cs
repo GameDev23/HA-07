@@ -25,6 +25,8 @@ public class DavidGoal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !wasToggled)
         {
+            if(Manager.Instance.CoinsLeft != 0)
+                return;
             StartCoroutine(Manager.Instance.Finish(AudioManager.Instance.Goal, 5f));
             if (Manager.Instance.isGoal)
             {

@@ -14,6 +14,8 @@ public class Manager : MonoBehaviour
     public TextMeshProUGUI RecordTextMesh;
     public TextMeshProUGUI CollectibleTextMesh;
 
+    public Texture[] Skins;
+
     public bool isGoal = false;
     public bool isToggled = false;
     private bool hasPrevRecord = false;

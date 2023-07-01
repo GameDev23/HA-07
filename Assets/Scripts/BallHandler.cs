@@ -35,6 +35,11 @@ public class BallHandler : MonoBehaviour
         BottomContact.transform.position = transform.position;
 
         jumpsLeft = MidAirJumps;
+
+        Material mat = GetComponent<Renderer>().material;
+        int choosenSkin = PlayerPrefs.GetInt("Skin", 0);
+        mat.SetTexture("_BaseMap",Manager.Instance.Skins[choosenSkin]);
+        Debug.Log("Using skin " + choosenSkin);
     }
 
     //Using fixed Update for physics manipulation to make it framerate independent
@@ -66,6 +71,11 @@ public class BallHandler : MonoBehaviour
         
         //get the Input of the Ball
         MoveVector = new Vector3();
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("Menu");
+        }
         if (!isGodmode)
         {
             if (Input.GetButton("Horizontal"))

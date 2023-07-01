@@ -19787,6 +19787,10 @@ MonoBehaviour:
   TimeTextMesh: {fileID: 1175608641}
   RecordTextMesh: {fileID: 1297692761}
   CollectibleTextMesh: {fileID: 237564452}
+  Skins:
+  - {fileID: 2800000, guid: 0ed02f0175d6c454593b84e9d230ca93, type: 3}
+  - {fileID: 2800000, guid: 0035648911161394d9b2276776243b0c, type: 3}
+  - {fileID: 2800000, guid: a7a6a82f34993bf458a03f15f84f08c1, type: 3}
   isGoal: 0
   isToggled: 0
   CoinsLeft: 0
@@ -25279,7 +25283,7 @@ PrefabInstance:
     - target: {fileID: 4322228623084247403, guid: 1c79cdcfc3daf794b91acb5fe39aa030,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.53
+      value: -2.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 4322228623084247403, guid: 1c79cdcfc3daf794b91acb5fe39aa030,
         type: 3}
