@@ -17,7 +17,11 @@ public class Coin : MonoBehaviour
     {
         
     }
-    
+
+    private void OnDestroy()
+    {
+        Manager.Instance.Collectibles.Remove(gameObject);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -10,7 +10,7 @@ public class BallHandler : MonoBehaviour
 
     [SerializeField] private float Acceleration = 1f;
     [SerializeField] private Vector3 MaxVelocity = new Vector3(8f, 100f, 8f);
-    [SerializeField] private float GodmodeSpeed = 0.5f;
+    [SerializeField] private float GodmodeSpeed = 10f;
     [SerializeField] private Camera camera;
     [SerializeField] private float OffsetFromPlayer = 5;
     [SerializeField] private float JumpStrength = 5;
@@ -85,7 +85,7 @@ public class BallHandler : MonoBehaviour
         }
         else
         {
-            transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("yaxis") * 0.2f, Input.GetAxis("Vertical")) * GodmodeSpeed;
+            transform.position += new Vector3(Input.GetAxis("Horizontal") , Input.GetAxis("yaxis") * 0.2f, Input.GetAxis("Vertical")) * Time.deltaTime * GodmodeSpeed;
             
         }
 

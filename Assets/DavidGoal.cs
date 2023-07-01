@@ -25,20 +25,16 @@ public class DavidGoal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !wasToggled)
         {
-            StartCoroutine(Finish());
+            StartCoroutine(Manager.Instance.Finish(AudioManager.Instance.Goal, 5f));
+            if (Manager.Instance.isGoal)
+            {
+                wasToggled = true;
+                foreach (GameObject obj in ParticleSystems)
+                {
+                    obj.SetActive(true);
+                }
+            }
         }
     }
-
-    IEnumerator Finish()
-    {
-        wasToggled = true;
-        AudioManager.Instance.SourceSFX.PlayOneShot(AudioManager.Instance.Goal,1f);
-        foreach (GameObject obj in ParticleSystems)
-        {
-            obj.SetActive(true);
-        }
-
-        yield return new WaitForSeconds(5f);
-        Manager.Instance.Goal();
-    }
+    
 }

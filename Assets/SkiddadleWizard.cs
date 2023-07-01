@@ -45,7 +45,7 @@ public class SkiddadleWizard : MonoBehaviour
 
     IEnumerator Die()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0f);
         AudioManager.Instance.SourceSFX.PlayOneShot(AudioManager.Instance.FartReverb, 2f);
         Destroy(gameObject);
     }
