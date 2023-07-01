@@ -22,7 +22,7 @@ public class Dust : MonoBehaviour
 
     private void Update()
     {
-        if(BallManager.Instance.isOnGround)
+        if(BallManager.Instance.isOnGround && (Input.GetButton("Horizontal") || Input.GetButton("Vertical")))
         {
             // Berechne die Richtung vom aktuellen Objekt zum Zielobjekt
             Vector3 direction = targetObject.position - prevPosition;
