@@ -43,26 +43,13 @@ public class BallHandler : MonoBehaviour
     }
 
     //Using fixed Update for physics manipulation to make it framerate independent
-    private void FixedUpdate()
+    void FixedUpdate () 
     {
-        if (MoveVector.magnitude > 0)
-        {
-            
-            //dont let the ball surpass the max velocity
-            if (Math.Abs(rg.velocity.x) > MaxVelocity.x)
-                MoveVector.x = 0;
-            if (Math.Abs(rg.velocity.y) > MaxVelocity.y)
-                MoveVector.y = 0;
-            if (Math.Abs(rg.velocity.z) > MaxVelocity.z)
-                MoveVector.z = 0;
-            rg.AddForce(MoveVector);
-        }
-        else
+        if (Input.GetAxis("Horizontal") == 0 && (Input.GetAxis("Vertical") == 0))
         {
             // No input was given, so we slow the ball gradually
-            rg.AddForce(Vector3.Lerp(-rg.velocity, Vector3.zero, Time.deltaTime));
+            rg.AddForce(Vector3.Lerp(-rg.velocity, Vector3.zero, Time.deltaTime * 0.01f));
         }
-
     }
 
     // Update is called once per frame
@@ -80,12 +67,12 @@ public class BallHandler : MonoBehaviour
         {
             if (Input.GetButton("Horizontal"))
             {
-                MoveVector += MoveVector + Vector3.right * Input.GetAxis("Horizontal") * Acceleration;
+                MoveVector += Vector3.right * Input.GetAxis("Horizontal") * Acceleration * Time.deltaTime * 100;
 
             }
             if (Input.GetButton("Vertical"))
             {
-                MoveVector += MoveVector + Vector3.forward * Input.GetAxis("Vertical") * Acceleration;
+                MoveVector += Vector3.forward * Input.GetAxis("Vertical") * Acceleration * Time.deltaTime * 100;
             }
 
             if (Input.GetButtonDown("Jump"))
@@ -96,9 +83,28 @@ public class BallHandler : MonoBehaviour
         else
         {
             transform.position += new Vector3(Input.GetAxis("Horizontal") , Input.GetAxis("yaxis") * 0.2f, Input.GetAxis("Vertical")) * Time.deltaTime * GodmodeSpeed;
-            
         }
-
+        
+        if (MoveVector.magnitude > 0)
+        {
+            Vector3 temp = MoveVector;
+            //dont let the ball surpass the max velocity
+            if (Math.Abs(rg.velocity.x + MoveVector.x) > MaxVelocity.x)
+            {
+                MoveVector.x = 0;
+            }
+            if (Math.Abs(rg.velocity.y + MoveVector.y) > MaxVelocity.y)
+            {
+                MoveVector.y = 0;
+            }
+            if (Math.Abs(rg.velocity.z + MoveVector.z) > MaxVelocity.z)
+            {
+                MoveVector.z = 0;
+            }
+            
+            rg.AddForce(MoveVector);
+        }
+        
         if (Input.GetButtonDown("Enable Debug Button 1"))
         {
             ToggleGodmode();
@@ -177,6 +183,8 @@ public class BallHandler : MonoBehaviour
 
     IEnumerator resetScene()
     {
+        if(Manager.Instance.isGoal)
+            yield break;
         AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.NichtSoTief;
         AudioManager.Instance.SourceSFX.volume = 1f;
         AudioManager.Instance.SourceSFX.loop = false;

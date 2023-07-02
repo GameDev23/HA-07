@@ -91,7 +91,7 @@ public class Manager : MonoBehaviour
         }
         else if(!isToggled)
         {
-            if((recordSec > sec) || (recordSec == sec && recordMs > ms))
+            if(!hasPrevRecord || (recordSec > sec) || (recordSec == sec && recordMs > ms))
             {
                 //Adjust record
                 PlayerPrefs.SetInt("DavidSeconds", sec);
@@ -100,7 +100,7 @@ public class Manager : MonoBehaviour
             }
             TimeTextMesh.text = "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
             if(!hasPrevRecord)
-                RecordTextMesh.text =  "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
+                RecordTextMesh.text =  "<color=green>" + TimeTextMesh.text +"</color>";
             isToggled = true;
         }
         
