@@ -9,7 +9,7 @@ public class BallHandler : MonoBehaviour
     //This script handles the Ball ( ͡° ͜ʖ ͡°)   e.g the Movement etc
 
     [SerializeField] private float Acceleration = 1f;
-    [SerializeField] private Vector3 MaxVelocity = new Vector3(8f, 100f, 8f);
+    [SerializeField] private float MaxSpeed = 8f;
     [SerializeField] private float GodmodeSpeed = 10f;
     [SerializeField] private Camera camera;
     [SerializeField] private float OffsetFromPlayer = 5;
@@ -50,11 +50,6 @@ public class BallHandler : MonoBehaviour
             // No input was given, so we slow the ball gradually
             rg.AddForce(Vector3.Lerp(-rg.velocity, Vector3.zero, Time.deltaTime * 0.01f));
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
         //get the Input of the Ball
         MoveVector = new Vector3();
@@ -74,11 +69,7 @@ public class BallHandler : MonoBehaviour
             {
                 MoveVector += Vector3.forward * Input.GetAxis("Vertical") * Acceleration * Time.deltaTime * 100;
             }
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                Jump();
-            }
+            
         }
         else
         {
@@ -87,27 +78,32 @@ public class BallHandler : MonoBehaviour
         
         if (MoveVector.magnitude > 0)
         {
-            Vector3 temp = MoveVector;
-            //dont let the ball surpass the max velocity
-            if (Math.Abs(rg.velocity.x + MoveVector.x) > MaxVelocity.x)
-            {
-                MoveVector.x = 0;
-            }
-            if (Math.Abs(rg.velocity.y + MoveVector.y) > MaxVelocity.y)
-            {
-                MoveVector.y = 0;
-            }
-            if (Math.Abs(rg.velocity.z + MoveVector.z) > MaxVelocity.z)
-            {
-                MoveVector.z = 0;
-            }
-            
             rg.AddForce(MoveVector);
         }
+        Debug.Log(rg.velocity.magnitude);
+        if (rg.velocity.magnitude > MaxSpeed)
+        {
+            rg.velocity = Vector3.ClampMagnitude(rg.velocity, MaxSpeed);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+
         
         if (Input.GetButtonDown("Enable Debug Button 1"))
         {
             ToggleGodmode();
+        }
+
+        if (!isGodmode)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }
         }
 
         BallManager.Instance.isOnGround = isOnGround;
