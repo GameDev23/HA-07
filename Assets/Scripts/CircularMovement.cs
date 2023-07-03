@@ -10,15 +10,17 @@ public class CircularMovement : MonoBehaviour
 
     private float angle = 0f;
     private Vector3 centerPoint;
+    private Vector3 copyCenterPoint;
 
     private void Start()
     {
         centerPoint = transform.position;
+        copyCenterPoint = transform.position;
     }
 
     private void Update()
     {
-        if (StartCircularMovement) 
+        if (StartCircularMovement)
         {
             angle += speed * Time.deltaTime;
             float x = centerPoint.x + radius * Mathf.Cos(angle);
@@ -26,6 +28,11 @@ public class CircularMovement : MonoBehaviour
             float z = centerPoint.z;
 
             transform.position = new Vector3(x, y, z);
+        }
+
+        else 
+        {
+            transform.position = copyCenterPoint;
         }
     }
 }

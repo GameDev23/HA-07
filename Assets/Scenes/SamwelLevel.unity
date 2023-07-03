@@ -8059,8 +8059,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircularMovementSwitch
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be5ddf59ee16a5641ad1cbb9129029be, type: 3}
+--- !u!1 &1146929519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2967871528483572693, guid: be5ddf59ee16a5641ad1cbb9129029be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146929518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1146929520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146929519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1523ed0a11d48c040bfb001ff14ca434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isToggleAble: 1
+  isActive: 0
+  NormalColor: {r: 1, g: 1, b: 1, a: 1}
+  ActivatedColor: {r: 0.6509804, g: 0.39215687, b: 0.93333334, a: 0}
+  objectsToEnable:
+  - {fileID: 1277839094}
 --- !u!1001 &1151390887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8905,6 +8930,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4462df8489303ba448bfd5971b82232f, type: 3}
+--- !u!1 &1277839094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 765085598264726, guid: 4462df8489303ba448bfd5971b82232f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1277839093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1287903442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4473861340463127780, guid: eb027d38027a0474f9ac33e96dc2db19,
@@ -13122,6 +13153,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1277839093}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051403906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277839094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19705848fade01744ac95ca42795e809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  speed: 2
+  StartCircularMovement: 0
 --- !u!1 &2061087388 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3061510631624073398, guid: cb5a3981dbf3d467c9ffe05fc985ae52,
