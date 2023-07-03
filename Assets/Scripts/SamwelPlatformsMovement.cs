@@ -7,6 +7,7 @@ public class SamwelPlatformsMovement : MonoBehaviour
 
     [SerializeField] Vector3 MovingVector;
     [SerializeField] float MovingTime;
+    [SerializeField] public bool StartMovement = false;
     public bool hasStarted = false;
     private float elapsedTime = 0f;
     private GameObject Player;
@@ -14,28 +15,34 @@ public class SamwelPlatformsMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!hasStarted)
+        if (StartMovement) 
         {
-            elapsedTime = MovingTime / 2; // when we start we are in the middle
-            hasStarted = true;
+            if (!hasStarted)
+            {
+                elapsedTime = MovingTime / 2; // when we start we are in the middle
+                hasStarted = true;
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-         transform.position += MovingVector * Time.deltaTime;
-         elapsedTime += Time.deltaTime;
-
-        if (Player != null) 
+        if (StartMovement)
         {
-            Player.transform.position += MovingVector * Time.deltaTime;
-        }
+            transform.position += MovingVector * Time.deltaTime;
+            elapsedTime += Time.deltaTime;
 
-        if (elapsedTime >= MovingTime)
-        {
-            elapsedTime = 0f;
-            MovingVector *= -1;
+            if (Player != null)
+            {
+                Player.transform.position += MovingVector * Time.deltaTime;
+            }
+
+            if (elapsedTime >= MovingTime)
+            {
+                elapsedTime = 0f;
+                MovingVector *= -1;
+            }
         }
     }
 
