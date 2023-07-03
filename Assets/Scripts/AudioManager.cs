@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Son;
     public AudioClip VineBoom;
     public AudioClip SonicCoin;
+    public AudioClip WindyCreepy;
     void Awake(){
         if(Instance == null)
             Instance = this;

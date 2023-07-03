@@ -12788,6 +12788,7 @@ MonoBehaviour:
   Son: {fileID: 0}
   VineBoom: {fileID: 0}
   SonicCoin: {fileID: 0}
+  WindyCreepy: {fileID: 8300000, guid: a12a0f2dd1361644f990a57837ee25a7, type: 3}
 --- !u!4 &1968071232
 Transform:
   m_ObjectHideFlags: 0
