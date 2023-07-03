@@ -8197,7 +8197,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1156319107
 PrefabInstance:
@@ -13165,8 +13165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19705848fade01744ac95ca42795e809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
-  speed: 2
+  radius: 10
+  speed: 6
   StartCircularMovement: 0
 --- !u!1 &2061087388 stripped
 GameObject:
