@@ -12,6 +12,7 @@ public class Level1SwitchEnabler : MonoBehaviour
     [SerializeField] private Color ActivatedColor;
 
     [SerializeField] private GameObject[] objectsToEnable;
+    [SerializeField] private AudioSource audio;
 
     private bool isToggling = false;
     private bool wasToggled = false;
@@ -63,6 +64,21 @@ public class Level1SwitchEnabler : MonoBehaviour
         {
             CircularMovement circular = obj.GetComponent<CircularMovement>();
             circular.StartCircularMovement = !circular.StartCircularMovement;
+
+            if (!obj.activeSelf)
+            {
+                obj.SetActive(true);
+            }
+        }
+
+        if (isActive)
+        {
+            audio.Play();
+            audio.volume = 0.08f;
+        }
+        else
+        { 
+            audio.Pause();
         }
 
         wasToggled = true;
