@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip NichtSoTief;
     public AudioClip Goal;
     
+    public AudioClip WindyCreepy;
     void Awake(){
         if(Instance == null)
             Instance = this;
