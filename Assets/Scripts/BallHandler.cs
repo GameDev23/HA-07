@@ -157,21 +157,23 @@ public class BallHandler : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Player collided with " + other.gameObject.name);
+
+        
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
         if (other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Hit ground. Resetting jumps");
             isOnGround = true;
             jumpsLeft = MidAirJumps;
         }
-        
     }
 
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ground"))
-        {
             isOnGround = false;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
