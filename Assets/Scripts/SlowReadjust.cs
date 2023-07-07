@@ -18,6 +18,7 @@ public class SlowReadjust : MonoBehaviour
 
     private void Update()
     {
+        /*
         // Check if we've reached the target position
         if (elapsedTime >= duration)
         {
@@ -34,5 +35,6 @@ public class SlowReadjust : MonoBehaviour
 
         // Increase the elapsed time
         elapsedTime += Time.deltaTime;
+        */
     }
 }

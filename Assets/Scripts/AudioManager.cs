@@ -12,6 +12,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip Son;
     public AudioClip VineBoom;
     public AudioClip SonicCoin;
+    public AudioClip GokuDrip;
+    public AudioClip WhatTheDogDoin;
+    public AudioClip FartReverb;
+    public AudioClip NichtSoTief;
+    public AudioClip Goal;
+    
     public AudioClip WindyCreepy;
     public AudioClip SwitchFlick;
     void Awake(){

@@ -26,6 +26,7 @@ public class RonaldoScript : MonoBehaviour
     {
         transform.position = Origin;
         elapsedTime = 0f;
+        
     }
 
     // Update is called once per frame
@@ -33,6 +34,6 @@ public class RonaldoScript : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
         if(elapsedTime >= LifeTime)
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 }
