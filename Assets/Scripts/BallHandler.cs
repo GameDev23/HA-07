@@ -166,6 +166,14 @@ public class BallHandler : MonoBehaviour
         
     }
 
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
