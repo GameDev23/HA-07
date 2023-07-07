@@ -80,7 +80,6 @@ public class BallHandler : MonoBehaviour
         {
             rg.AddForce(MoveVector);
         }
-        Debug.Log(rg.velocity.magnitude);
         if (rg.velocity.magnitude > MaxSpeed)
         {
             rg.velocity = Vector3.ClampMagnitude(rg.velocity, MaxSpeed);
@@ -173,6 +172,7 @@ public class BallHandler : MonoBehaviour
 
         if (other.gameObject.CompareTag("DeathBox"))
         {
+            Debug.Log("Restarting scene now");
             StartCoroutine(resetScene());
         }
     }
@@ -181,10 +181,13 @@ public class BallHandler : MonoBehaviour
     {
         if(Manager.Instance.isGoal)
             yield break;
-        AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.NichtSoTief;
-        AudioManager.Instance.SourceSFX.volume = 1f;
-        AudioManager.Instance.SourceSFX.loop = false;
-        AudioManager.Instance.SourceSFX.Play();
+        if (SceneManager.GetActiveScene().name.Contains("David"))
+        {
+            AudioManager.Instance.SourceSFX.clip = AudioManager.Instance.NichtSoTief;
+            AudioManager.Instance.SourceSFX.volume = 1f;
+            AudioManager.Instance.SourceSFX.loop = false;
+            AudioManager.Instance.SourceSFX.Play();
+        }
 
         while (AudioManager.Instance.SourceSFX.isPlaying)
         {

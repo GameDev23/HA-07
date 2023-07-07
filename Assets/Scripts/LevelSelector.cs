@@ -29,7 +29,7 @@ public class LevelSelector : MonoBehaviour
 
     public void OnSamwelLevelClick()
     {
-        //TODO Implement samwel scene
+        SceneManager.LoadScene("SamwelLevel");
     }
 
     public void OnSprite1Click()
