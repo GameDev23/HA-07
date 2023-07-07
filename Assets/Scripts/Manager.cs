@@ -24,7 +24,7 @@ public class Manager : MonoBehaviour
 
     private int recordSec = 0;
     private float recordMs = 0f;
-    
+
     public int CoinsLeft;
     public int MaxCoins = 0;
 
@@ -38,8 +38,9 @@ public class Manager : MonoBehaviour
     private string currentS = "DavidSeconds";
     private string currentMs = "DavidMilliseconds";
 
-    void Awake(){
-        if(Instance == null)
+    void Awake()
+    {
+        if (Instance == null)
             Instance = this;
         else if (Instance != this)
             Destroy(this);
@@ -103,31 +104,31 @@ public class Manager : MonoBehaviour
         if (!isGoal)
         {
             ms += Time.deltaTime * 1000;
-            if ((int) ms >= 1000)
+            if ((int)ms >= 1000)
             {
-                sec += (int) ms / 1000;
+                sec += (int)ms / 1000;
                 ms %= 1000;
             }
 
             TimeTextMesh.text = sec + " s";
-            if(!hasPrevRecord)
-                RecordTextMesh.text ="Record: " + sec + " s";
+            if (!hasPrevRecord)
+                RecordTextMesh.text = "Record: " + sec + " s";
         }
-        else if(!isToggled)
+        else if (!isToggled)
         {
-            if(!hasPrevRecord || (recordSec > sec) || (recordSec == sec && recordMs > ms))
+            if (!hasPrevRecord || (recordSec > sec) || (recordSec == sec && recordMs > ms))
             {
                 //Adjust record
                 PlayerPrefs.SetInt(currentS, sec);
                 PlayerPrefs.SetFloat(currentMs, ms);
-                RecordTextMesh.text =  "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
+                RecordTextMesh.text = "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
             }
             TimeTextMesh.text = "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
-            if(!hasPrevRecord)
-                RecordTextMesh.text =  "<color=green>" + TimeTextMesh.text +"</color>";
+            if (!hasPrevRecord)
+                RecordTextMesh.text = "<color=green>" + TimeTextMesh.text + "</color>";
             isToggled = true;
         }
-        
+
     }
 
     public void Goal()
@@ -135,10 +136,10 @@ public class Manager : MonoBehaviour
 
         SceneManager.LoadScene("Menu");
     }
-    
+
     public IEnumerator Finish(AudioClip clip, float delay)
     {
-        
+
         Manager.Instance.isGoal = true;
         AudioManager.Instance.SourceSFX.PlayOneShot(clip);
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28867888, g: 0.40170783, b: 0.34831443, a: 1}
+  m_IndirectSpecularColor: {r: 0.2886764, g: 0.40185335, b: 0.3482869, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3115,7 +3115,7 @@ PrefabInstance:
     - target: {fileID: 2348358976536306108, guid: a149745594fa8744aa3bf860d35a9705,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 215.152
+      value: 285.07806
       objectReference: {fileID: 0}
     - target: {fileID: 2348358976536306108, guid: a149745594fa8744aa3bf860d35a9705,
         type: 3}
@@ -8369,6 +8369,7 @@ MonoBehaviour:
   objectsToEnable:
   - {fileID: 1277839094}
   audio: {fileID: 1146929525}
+  PressSound: {fileID: 0}
 --- !u!82 &1146929525
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13518,7 +13519,7 @@ MonoBehaviour:
   Qua: {fileID: 8300000, guid: 1d167ba424f6bbf47a519017f9547f6d, type: 3}
   Son: {fileID: 8300000, guid: 32f195f1abae3944a88916f8f1302507, type: 3}
   VineBoom: {fileID: 0}
-  SonicCoin: {fileID: 0}
+  SonicCoin: {fileID: 8300000, guid: 536d14bd3ef4d154295e0f933c0a3e12, type: 3}
   GokuDrip: {fileID: 0}
   WhatTheDogDoin: {fileID: 0}
   FartReverb: {fileID: 0}

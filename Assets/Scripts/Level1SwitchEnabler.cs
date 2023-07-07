@@ -13,6 +13,7 @@ public class Level1SwitchEnabler : MonoBehaviour
 
     [SerializeField] private GameObject[] objectsToEnable;
     [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioClip PressSound;
 
     private bool isToggling = false;
     private bool wasToggled = false;
@@ -52,6 +53,9 @@ public class Level1SwitchEnabler : MonoBehaviour
         if (wasToggled && !isToggleAble)
             yield break;
         isActive = !isActive;
+
+        if (PressSound != null)
+            AudioManager.Instance.SourceSFX.PlayOneShot(PressSound, 1f);
 
         isToggling = true;
 
