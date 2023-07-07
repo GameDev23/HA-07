@@ -5050,7 +5050,7 @@ MonoBehaviour:
   GodmodeSpeed: 10
   camera: {fileID: 0}
   OffsetFromPlayer: 5
-  JumpStrength: 200
+  JumpStrength: 250
   BottomContact: {fileID: 2348358976848698179}
   isOnGround: 1
   MidAirJumps: 1
