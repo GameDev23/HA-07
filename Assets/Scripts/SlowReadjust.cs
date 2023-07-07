@@ -7,6 +7,7 @@ public class SlowReadjust : MonoBehaviour
     public Transform target;
     public float duration = 3f;
     public float Speed = 1f;
+    [SerializeField] public bool StartReadjust = false;
 
     private Vector3 startPosition;
     private float elapsedTime = 0f;
@@ -20,12 +21,15 @@ public class SlowReadjust : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * Speed);
-
-        if (!reachedDestination && Vector3.Distance(transform.position, target.position) <= 0.2f)
+        if(StartReadjust)
         {
-            reachedDestination = true;
-            transform.position = target.position;
+            transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * Speed);
+
+            if (!reachedDestination && Vector3.Distance(transform.position, target.position) <= 0.2f)
+            {
+                reachedDestination = true;
+                transform.position = target.position;
+            }
         }
     }
 }
