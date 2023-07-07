@@ -27,19 +27,43 @@ public class Manager : MonoBehaviour
     
     public int CoinsLeft;
     public int MaxCoins = 0;
-    
+
+    private string davidS = "DavidSeconds";
+    private string davidMs = "DavidMilliseconds";
+    private string samwelS = "SamwelSeconds";
+    private string samwelMs = "SamwelMilliseconds";
+    private string marvinS = "MarvinSeconds";
+    private string marvinMs = "MarvinMilliseconds";
+
+    private string currentS = "DavidSeconds";
+    private string currentMs = "DavidMilliseconds";
+
     void Awake(){
         if(Instance == null)
             Instance = this;
         else if (Instance != this)
             Destroy(this);
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "DavidLevel":
+                break;
+            case "SamwelLevel":
+                currentS = samwelS;
+                currentMs = samwelMs;
+                break;
+            default:
+                currentS = marvinS;
+                currentMs = marvinMs;
+                break;
+        }
     }
     // Start is called before the first frame update
     void Start()
     {
         isGoal = false;
-        recordSec = PlayerPrefs.GetInt("DavidSeconds", 0);
-        recordMs = PlayerPrefs.GetFloat("DavidMilliseconds", 0f);
+        recordSec = PlayerPrefs.GetInt(currentS, 0);
+        recordMs = PlayerPrefs.GetFloat(currentMs, 0f);
 
         if (recordSec == 0 && recordMs == 0)
         {
@@ -94,8 +118,8 @@ public class Manager : MonoBehaviour
             if(!hasPrevRecord || (recordSec > sec) || (recordSec == sec && recordMs > ms))
             {
                 //Adjust record
-                PlayerPrefs.SetInt("DavidSeconds", sec);
-                PlayerPrefs.SetFloat("DavidMilliseconds", ms);
+                PlayerPrefs.SetInt(currentS, sec);
+                PlayerPrefs.SetFloat(currentMs, ms);
                 RecordTextMesh.text =  "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
             }
             TimeTextMesh.text = "<color=green>" + TimeTextMesh.text + " " + ms.ToString("0") + " ms" + "</color>";
