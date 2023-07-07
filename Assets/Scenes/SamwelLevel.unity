@@ -4284,7 +4284,7 @@ PrefabInstance:
     - target: {fileID: 2348358976536306108, guid: a149745594fa8744aa3bf860d35a9705,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.243565
+      value: 19.243565
       objectReference: {fileID: 0}
     - target: {fileID: 2348358976536306108, guid: a149745594fa8744aa3bf860d35a9705,
         type: 3}
@@ -4294,7 +4294,7 @@ PrefabInstance:
     - target: {fileID: 2348358976536306108, guid: a149745594fa8744aa3bf860d35a9705,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 380.07806
+      value: 174.07805
       objectReference: {fileID: 0}
     - target: {fileID: 2348358976536306108, guid: a149745594fa8744aa3bf860d35a9705,
         type: 3}
@@ -6084,12 +6084,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b16800bd595eb4eb2132d4ad224444, type: 3}
---- !u!1 &607322973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3759495184731953451, guid: 87b16800bd595eb4eb2132d4ad224444,
-    type: 3}
-  m_PrefabInstance: {fileID: 607322972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &612741674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7030,7 +7024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &742204786
 Transform:
   m_ObjectHideFlags: 0
@@ -7941,7 +7935,6 @@ MonoBehaviour:
   - {fileID: 261210679}
   - {fileID: 818072250}
   - {fileID: 1148894715}
-  - {fileID: 607322973}
   TimeTextMesh: {fileID: 348920419}
   RecordTextMesh: {fileID: 1061441081}
   CollectibleTextMesh: {fileID: 917296889}
@@ -15177,7 +15170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1788034919
 Transform:
   m_ObjectHideFlags: 0
