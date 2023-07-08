@@ -15,6 +15,7 @@ public class SwitchScript : MonoBehaviour
     [SerializeField] private Color ActivatedColor;
 
     [SerializeField] private GameObject[] ObjectsToToggle;
+    [SerializeField] private GameObject[] ObjectsToEnableOnce;
 
     private bool isToggling = false;
     private bool wasToggled = false;
@@ -82,6 +83,11 @@ public class SwitchScript : MonoBehaviour
         foreach (GameObject obj in ObjectsToToggle)
         {
             obj.SetActive(!obj.activeSelf);
+        }
+
+        foreach (GameObject obj in ObjectsToEnableOnce)
+        {
+            obj.SetActive(true);
         }
 
         wasToggled = !wasToggled;
