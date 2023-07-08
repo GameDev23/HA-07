@@ -90,7 +90,6 @@ public class BallHandler : MonoBehaviour
     void Update()
     {
         
-
         
         if (Input.GetButtonDown("Enable Debug Button 1"))
         {
@@ -165,8 +164,12 @@ public class BallHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            isOnGround = true;
-            jumpsLeft = MidAirJumps;
+            Vector3 contactPoint = other.GetContact(0).point;
+            if(contactPoint.y < transform.position.y - 0.2f)
+            {
+                isOnGround = true;
+                jumpsLeft = MidAirJumps;
+            }
         }
     }
 
