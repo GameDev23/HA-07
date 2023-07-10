@@ -24,7 +24,7 @@ public class LevelSelector : MonoBehaviour
 
     public void OnMarvinLevelClick()
     {
-        //TODO Implement marvin scene
+        SceneManager.LoadScene("Marvin Level");
     }
 
     public void OnSamwelLevelClick()
