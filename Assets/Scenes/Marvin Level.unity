@@ -16800,6 +16800,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be,
         type: 3}
+      propertyPath: PressSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b7d5b744b8d3b54880079c3ce4eb6e1, type: 3}
+    - target: {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be,
+        type: 3}
       propertyPath: isToggleAble
       value: 0
       objectReference: {fileID: 0}
@@ -18775,6 +18780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be,
+        type: 3}
+      propertyPath: PressSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b7d5b744b8d3b54880079c3ce4eb6e1, type: 3}
     - target: {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be,
         type: 3}
       propertyPath: isToggleAble
@@ -41428,6 +41438,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch
       objectReference: {fileID: 0}
+    - target: {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be,
+        type: 3}
+      propertyPath: PressSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b7d5b744b8d3b54880079c3ce4eb6e1, type: 3}
     - target: {fileID: 2967871528483572702, guid: be5ddf59ee16a5641ad1cbb9129029be,
         type: 3}
       propertyPath: isToggleAble

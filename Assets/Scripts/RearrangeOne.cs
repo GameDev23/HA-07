@@ -18,6 +18,8 @@ public class RearrangeOne : MonoBehaviour
     private bool isToggling = false;
     private bool wasToggled = false;
 
+    private Vector3 origin;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class RearrangeOne : MonoBehaviour
             GetComponent<Renderer>().material.color = ActivatedColor;
         else
             GetComponent<Renderer>().material.color = NormalColor;
+        origin = transform.position;
     }
 
     // Update is called once per frame
@@ -50,16 +53,30 @@ public class RearrangeOne : MonoBehaviour
         if (wasToggled && !isToggleAble)
             yield break;
         isActive = !isActive;
-
+        origin = transform.position;
         if (PressSound != null)
             AudioManager.Instance.SourceSFX.PlayOneShot(PressSound, 1f);
 
         isToggling = true;
 
+        if(PressSound != null && isActive)
+            AudioManager.Instance.SourceSFX.PlayOneShot(PressSound, 1f);
+        while(Vector3.Distance(new Vector3(origin.x, origin.y - 0.1f, origin.z), transform.position) > 0.02f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(origin.x, origin.y - 0.1f, origin.z), Time.deltaTime);
+            yield return null;
+        }
+        
         if (isActive)
             GetComponent<Renderer>().material.color = ActivatedColor;
         else
             GetComponent<Renderer>().material.color = NormalColor;
+        
+        while (Vector3.Distance(origin, transform.position) > 0.02f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, origin, Time.deltaTime);
+            yield return null;
+        }
 
         foreach (GameObject obj in objectsToEnable)
         {
